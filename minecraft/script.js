@@ -10,7 +10,18 @@ function changeTheme() {
 
 function launchGame() {
   const version = document.getElementById("version-home").value;
-  window.location.href = `versions/${version}`;
+  const gameUrl = `versions/${version}`;
+
+  const main = document.querySelector(".main");
+  main.innerHTML = ""; 
+
+  const iframe = document.createElement("iframe");
+  iframe.src = gameUrl;
+  iframe.style.width = "100%";
+  iframe.style.height = "100%";
+  iframe.style.border = "none";
+
+  main.appendChild(iframe);
 }
 
 function setCookie(name, value, days) {
