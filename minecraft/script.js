@@ -11,17 +11,12 @@ function changeTheme() {
 function launchGame() {
   const version = document.getElementById("version-home").value;
   const gameUrl = `versions/${version}`;
-
-  const main = document.querySelector(".main");
-  main.innerHTML = ""; 
-
-  const iframe = document.createElement("iframe");
-  iframe.src = gameUrl;
-  iframe.style.width = "100%";
-  iframe.style.height = "100%";
-  iframe.style.border = "none";
-
-  main.appendChild(iframe);
+  const newTab = window.open("about:blank", "_blank");
+  if (newTab) {
+    newTab.location.href = gameUrl;
+  } else {
+    alert("Popup blocked. Please allow popups for this site.");
+  }
 }
 
 function setCookie(name, value, days) {
